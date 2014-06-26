@@ -7,10 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "TKDragView.h"
 
 @interface ViewController ()
 {
-    UIImageView *dot;
+
 }
 
 @end
@@ -27,43 +28,90 @@
     
 
     
-  UIImage * image = [[UIImage alloc] init];
+//  UIImage * image = [[UIImage alloc] init];
     
-  UIView *view = [[UIView alloc] initWithFrame:CGRectMake(50, 70, 670, 400)];
-       view.backgroundColor = [UIColor blueColor];
-    
- 
+  UIView *view2 = [[UIView alloc] initWithFrame:CGRectMake(50, 70, 670, 400)];
+       view2.backgroundColor = [UIColor blueColor];
     
 
-    [self.view addSubview:view];
+    int x=10;
+    int y=10;
+
+    [self.view addSubview:view2];
     
     UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(50,530,670,400)];
     view1.backgroundColor = [UIColor redColor];
    
     
+        for (int i=0; i<4; i++) {
+            if (i<4) {
+                
+                 x=x+50;
+                 y+=50;
+            }
+            
+          [self panImages];
+          UIImageView * dot = [[UIImageView alloc] initWithFrame:CGRectMake(150+x, 170, 50, 50)];
+            
+            NSString * imageName=[NSString stringWithFormat:@"%@",[images objectAtIndex:i]];
+    dot.image=[UIImage imageNamed:imageName];
+
+         
+//[self setGesture];
+
+   
     
-   dot = [[UIImageView alloc] initWithFrame:CGRectMake(50, 70, 50, 50)];
-    dot.image=[UIImage imageNamed:@"3.png"];
-     
     [view1 addSubview:dot];
     [dot setImage:dot.image];
+
 
 
     
     [self.view addSubview:view1];
     
-//    [self setGesture];
+    }
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-//-(void)setGesture
-//
-//{
-// 
-//    UIPanGestureRecognizer *panGesture;
+-(void)setGesture
+
+{
+    UIPanGestureRecognizer *panGesture= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(setGesture)];
 //    
-//    [dot addGestureRecognizer:panGesture];
-//}
+//   [images addGestureRecognizer:panGesture];
+    
+}
+
+-(void)panImages
+
+{
+
+images = [NSMutableArray arrayWithObjects:
+                         @"1.png",
+                         @"2.png",
+                         @"3.png",@"4.png",nil];
+    
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    
+}
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    
+}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+}
 
 - (void)didReceiveMemoryWarning
 {

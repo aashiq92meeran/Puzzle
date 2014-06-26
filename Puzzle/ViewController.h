@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TKDragView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UICollectionViewDataSource , UICollectionViewDelegate>
 
 @property (nonatomic,strong)NSMutableArray *images;
 
